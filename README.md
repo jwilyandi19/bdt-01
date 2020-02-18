@@ -35,4 +35,4 @@ Untuk data preparation ini, saya akan melihat di mana sirkuit untuk masing-masin
 ![workflow](pics/workflow.jpg "workflow")
 
 Untuk konfigurasi dari MySQL Connector adalah seperti di bawah berikut.
-![MySQL Connector](pics/mysqlconfig.jpg "mysqlconfig"_
+![MySQL Connector](pics/mysqlconfig.jpg "mysqlconfig")
