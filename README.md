@@ -36,3 +36,62 @@ Untuk data preparation ini, saya akan melihat di mana sirkuit untuk masing-masin
 
 Untuk konfigurasi dari MySQL Connector adalah seperti di bawah berikut.
 ![MySQL Connector](pics/mysqlconfig.jpg "mysqlconfig")
+
+
+Untuk konfigurasi dari CSV Reader adalah seperti di bawah berikut.
+![CSV Reader](pics/csvreader.jpg "csvreader")
+
+Hasilnya dapat dilihat di bawah berikut.
+![CSV Result](pics/csvresult.jpg "csvresult")
+
+
+Untuk konfigurasi dari DB Table Selector untuk menyambungkan database dengan KNIME adalah seperti di bawah berikut.
+![DB Table Selector](pics/mysqltablereader.jpg "mysqltablereader")
+
+Hasilnya dapat dilihat di bawah berikut.
+![DB Table Result](pics/mysqlresult.jpg "mysqlresult")
+
+
+Terdapat node DB Reader untuk menjalankan query dari DB Table Selector. Berikut hasil dari DB Reader.
+![DB Reader Result](pics/dbreaderresult.jpg "dbreaderresult")
+
+
+Data dari database dan csv akhirnya bisa digabungkan dengan menggunakan node Joiner. CircuitID dari tabel Circuits dan Racers yang akan menyambungkan kedua tabel tersebut. Berikut konfigurasi dari Joiner
+![Joiner](pics/joiner.jpg "joiner")
+
+Berikut hasil dari eksekusi Joiner. Didapatkan data dengan 997 baris dan sudah terdapat data sirkuit di tabel tersebut
+![Joiner Result](pics/joinresult.jpg "joinresult")
+
+
+Terdapat column name yang duplikat seperti *name* yang di mana salah satu columnnya memiliki nama *name (#1)*. Oleh karena itu, terdapat modul Column Rename untuk mengganti nama kolom yang duplikat. Berikut konfigurasi dari Column Rename
+![Column Rename](pics/rename.jpg "rename")
+
+Berikut hasil dari rename columnnya
+![Column Rename Result](pics/renameresult.jpg "renameresult")
+
+
+Setelah dilihat, terdapat banyak column yang seharusnya tidak perlu ditampilkan. Oleh karena itu, table bisa difilter dengan menggunakan node Column Filter. Berikut konfigurasi dari Column Filter
+![Column Filter](pics/filter.jpg "filter")
+
+Berikut hasil dari Column Filter
+![Column Filter Result](pics/filterresult.jpg "filterresult")
+
+
+## 6. Evaluation
+Dari proses join yang sudah dilakukan, node Joiner menunjukkan lampu hijau, menandakan bahwa proses join dapat dilakukan
+
+
+## 7. Deployment
+Dalam proses deployment ini, data yang sudah difilter dan digabungkan akan ditambahkan ke dalam database ataupun CSV. Untuk penulisan ke CSV, dapat menggunakan node CSV Writer. Berikut konfigurasinya.
+![CSV Writer](pics/csvwriter.jpg "csvwriter")
+
+Sedangkan untuk penulisan ke database, dapat menggunakan DB Writer dengan menyambungkan dengan MySQL Connector dan Column Filter. Berikut konfigurasinya.
+![DB Writer](pics/dbwrite.jpg "dbwriter")
+
+
+
+
+
+
+
+
